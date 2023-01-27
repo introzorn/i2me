@@ -1,0 +1,81 @@
+<div class="form2" id="msgbox" style="display:none">
+    <button class="btn btn-danger btn-sm" style="float:right" onclick="hideMSGBOX()">⛌</button>
+    <div class="form3">
+
+        <form action="%[BASE_URL]adminprocess" id="addtree" onsubmit="valid(event);" method="post" style="display:none">
+            <span id="addedit_text">Добавить</span> :
+            <input type="hidden" id="prnt_name" name="parent" value=0>
+            <input type="hidden" id="id_edit" name="id" value=0>
+            <input type="hidden" name="cmd" id="addedit" value="add">
+            <input type="text" class="form-control sbn-1" id="vname" name="name" placeholder="Имя вкладки"
+                maxlength="255">
+            <!--
+     <input type="text" class="form-control sbn-2" id="vcont" name="content" placeholder="Текст вкладки"  >
+-->
+            <textarea type="text" class="form-control sbn-2" id="vcont" name="content"
+                placeholder="Текст вкладки"></textarea>
+           
+            <br>Родитель: <span id="view_parent" onclick="selectParent()" class="btn btn-dark sbn"
+                title="Нажмите чтобы изменить"
+                style="padding:5px; width:230px; overflow:hidden; margin:10px; height:36px"></span><br>
+                Положение элемента: <input type="number" id="itempose" name="itempose" min="1" max="1" value="1" style="margin:3px; width:100px; padding:4px;">   
+            <button type="submit" id="addedit_btn" class="btn btn-dark sbn">Добавить</button>
+        </form>
+
+        <form action="%[BASE_URL]adminprocess" id="delltree" method="post" style="display:none"
+            onsubmit="goDell(event)">
+            Хотите удалить <span id="id_name"></span> ?<br>
+            <input type="hidden" name="cmd" value="dell">
+            <input type="hidden" id="id_dell" name="id" value="0">
+            <button type="submit" style="width:100%" class="btn btn-dark sbn">Удалить</button>
+        </form>
+        <div id="msgbox_loader" style="display:flex; align-items: center;">
+            <img src="%[BASE_URL]img/load2.gif" alt=""> <span style="margin:5px">Обработка данных..</span>
+        </div>
+
+    </div>
+</div>
+<div class="podlogka" id="podlogka2" onclick="hideSelect();"></div>
+
+
+<div id="botcontainer">
+
+    <div class="btn btn-dark" id="footer" style="width:100%; text-align:right; cursor:unset;font-size:10pt;">
+        <!--
+    <span id="obrabotka" style="display:none; font-size:8pt;padding: 5px; cursor:pointer;">  
+        
+        <span id="b_array" title="обработка Array" onclick="obrabotka(false)">[array]</span>
+        <span id="b_sql"  title="обработка SQL+Array" onclick="obrabotka(true)">[sql]</span>
+     
+        
+    </span>
+   -->
+        <select id="sorted" class="btn btn-sm btn-secondary" style=" font-size:8pt;padding: 5px; cursor:pointer;"
+            onchange="sorted();">
+            <option value="1">сортировка от А-Я</option>
+            <option value="2">сортировка от Я-А</option>
+            <option value="3">сортировка по id ▲</option>
+            <option value="4">сортировка по id ▼</option>
+            <option value="5">по исходному </option>
+        </select>
+
+        %[asuser] 2021 introzorn &copy
+    </div>
+</div>
+<script>
+    // btn="%[obrabotka]"
+    // if(btn!=""){
+    //     document.getElementById("b_array").className="btn-sm btn-dark";
+    //     document.getElementById("b_sql").className="btn-sm btn-dark";
+    //     document.getElementById("b_"+btn).className="btn-sm btn-secondary";
+    //     document.getElementById("obrabotka").style.display="inline-block";
+    // }
+
+    sort = "%[sorted]";
+    if (sort == "") { sort = 4; }
+    document.getElementById("sorted").value = sort;
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,164 @@
+html, body{overflow-x: hidden;}
+.header{background-color:black; margin:0; padding:0; position:relative; display:block; height:100px; width:100%}
+.maintext{ text-shadow: 0 0 4px black, 0 0 10px black; color:white;position:absolute; display:inline-block; top:0; bottom:0; left:50px; margin:auto; font-size:40pt}
+.headbtn{color:white;position:absolute; display:block; top:0;  bottom:0; right:20px; margin:auto; font-size:10pt; width:max-content}
+
+.btnb{margin: 0px;padding: 3px 7px 3px 7px; border-radius:5px; cursor:pointer;-webkit-transition-duration: .5s ; transition-duration: .5s;transition-property: background-color;-webkit-transition-property: background-color; background-color: rgba(0,0,0,0);}
+.btnb:hover{background-color: black;}
+
+.btnb2{-webkit-transition-property: transform;transition-property: transform;border-radius:100%; display: inline-block;padding: 2px 10px 2px 10px; margin:0; background-color: rgba(255, 255, 255,0); transform:rotate(0deg)}
+.btnb2:hover{ background-color: rgba(255, 255, 255,0.5);}
+.btnb2[rel=active]{transform:rotate(90deg)!important}
+.btnnobtn{border-radius:100%; display: inline-block;padding: 2px 10px 2px 10px; margin:0; background-color:transparent!important}
+
+.namelink{
+    text-decoration: unset;
+}
+.namelink:hover{
+    text-decoration: underline;
+}
+.tree_cont{
+    border-left: 3px solid black;
+    left:0; right:0;
+    position:absolute;
+    margin:auto;
+    display:block;
+    width:max-content;
+    height:max-content;
+    padding:0;
+}
+.scroller{width:100%; height:500px; overflow-x:auto;overflow-y:auto; position:relative; display:block; background-color:white}
+
+.loginblock{
+    display:none;
+    min-height:max-content;
+     color:white;
+     text-align:center;
+     z-index:9999;
+      background:black;
+       position:fixed;
+        margin:auto;
+         top:0; 
+         left:0; 
+         Right:0; 
+         bottom:0; 
+         padding:10px; 
+         width: 600px; 
+    height:400px;
+
+}
+.podlogka{display:none;z-index:9999; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(255,255,255,0.8)}
+
+
+
+.form2{
+
+    left:0; bottom:0;
+    position:fixed;
+    margin:auto;
+    display:block;
+    width:100%;
+    height:max-content;
+    padding:0;
+    
+    z-index:9999;
+    background-color:black;
+}
+.form3{
+
+    left:0; bottom:0; right:0;
+    color:white;
+    margin:auto;
+    display:block;
+    width:max-content;
+    height:max-content;
+    padding:0;
+    padding-top:30px;
+    padding-bottom:30px;
+    z-index:9999;
+
+}
+.sbn-1{width:342px; display:inline-block}
+.sbn-2{width:425px; display:block; margin-top:5px}
+.ch3{
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.ccontrol{    
+    float: right;
+    display: block;
+}
+
+@media screen and (max-width: 650px) {
+   .maintext{font-size:8vw; left:0; right:0; bottom: 10px; top:auto; width:100%; text-align:center } 
+   .headbtn{left:0; right:0; bottom: auto; top:-5px; font-size:5vw}
+   .loginblock{width:100%}
+   .sbn-1{width:100%; margin-top:5px}
+   .sbn-2{width:100%; margin-top:5px}
+   .sbn{width: 100%!important; margin-top:5px}
+   .sbnp{width: 100%!important; margin:0!important; margin-top:5px!important}
+   .form3{width:100%; text-align:center}
+   .ch3{font-size:5vw; text-align:center}
+}
+
+.pagin {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    cursor:pointer;
+    transition:all 300ms;
+    margin:1px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.pagin_cur {
+    background-color:rgb(32, 32, 36);
+    color:white;
+    transition: all 500ms;
+    cursor:default;
+}
+.pagin_link {
+    background-color:blue;
+    color:white;
+    transition: all 500ms;
+  
+}
+.pagin_link:hover {
+    background-color:white;
+    color:blue;
+    transition: all 500ms;
+    border-color:blue
+}
+
+.pagin_hide {
+    background-color:transparent;
+    color:transparent;
+    transition: all 500ms;
+    cursor:default;
+   
+}
+.paginator{
+
+    left: 0;
+    right: 0;
+    
+    margin: auto;
+    display: block;
+    width: max-content;
+    height: max-content;
+    padding: 0;
+    padding-bottom:20px;
+}

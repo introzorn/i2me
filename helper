@@ -1,0 +1,60 @@
+<?php
+
+
+
+
+if ($argc < 2) {
+    die('Параметры помощника не заданы');
+}
+$fx = str_replace("-", "_", $argv[1]);
+if (function_exists($fx)) {
+    $fx();
+}
+die('Не удалось найти функционал - ' . $fx);
+
+
+function add_controller()
+{
+    global $argc, $argv;
+    if ($argc < 3) die('Не соответствующее колличество аргументов');
+    echo ('Создание нового контроллера' . $argv[2]);
+    echo ("\r\n");
+    if (!file_exists('Engine/maket_src/Controller.php')) die('Макет контроллера не обнаружен');
+    if (file_exists("Controllers/{$argv[2]}.php")) die('Такой контроллер уже существует');
+
+
+    $f = file_get_contents("Engine/maket_src/Controller.php");
+    $f = str_replace("_Helper_Class_Maket_", $argv[2], $f);
+    file_put_contents("Controllers/{$argv[2]}.php", $f);
+    die("Контроллер {$argv[2]} создан \r\n\r\n");
+}
+
+function add_model()
+{
+    global $argc, $argv;
+    if ($argc < 3) die('Не соответствующее колличество аргументов'."\r\n");
+    echo ('Создание новой модели ' . $argv[2]);
+    echo ("\r\n");
+    if (!file_exists('Engine/maket_src/Model.php')) die('Макет модели не обнаружен'."\r\n");
+    if (file_exists("Controllers/{$argv[2]}.php")) die('Такая модель уже существует'."\r\n");
+
+
+    $f = file_get_contents("Engine/maket_src/Model.php");
+    $f = str_replace("_Helper_Class_Maket_", $argv[2], $f);
+    file_put_contents("Models/{$argv[2]}.php", $f);
+    die("Модель {$argv[2]} создана \r\n\r\n");
+}
+
+function migrate_model(){
+    global $argc, $argv;
+    if ($argc < 3) die('Не соответствующее колличество аргументов');
+    echo ('Пробуем мигрировать ' . $argv[2]."\r\n");
+    if (file_exists("Controllers/{$argv[2]}.php")) die('Такой модели не существует'."\r\n");
+    require("config.php");
+    require("Engine/Model.php");
+    require("Models/{$argv[2]}.php");
+    $mname =  "App\\Models\\".$argv[2];
+    $model=new $mname;
+
+    die("Завершино \r\n\r\n");
+}

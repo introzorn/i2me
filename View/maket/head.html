@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+     <script src="%[BASE_URL]js/script.js"></script>
+    <link rel="stylesheet" href="%[BASE_URL]css/style.css">
+    <link rel="stylesheet" href="%[BASE_URL]css/mystyle.css">
+    <title>DataTree</title>
+    <script>
+    window.baseURL='%[BASE_URL]';
+    window.category='%[category]';
+     window.page='%[page]';
+    </script>
+</head>
+
+<body>
+    <div id="topcontainer" style="display:block">
+        <div class="header">
+            <canvas id="animhead" sh="0" width="1198" height="100"></canvas>
+            <div class="maintext">Data Tree Viewer</div>
+            <div class="headbtn">
+ 
+%[head_control]
+
+            </div>
+        </div>
+        <div class="podlogka" id="podlogka" onclick="hideForms();"></div>
+        <div class="loginblock" id="loginblock">
+            <div>
+                <button style="float:right" class="btn btn-dark" onclick="hideForms();">⛌</button>
+            </div>
+            <br><br>
+            <h3>Авторизация</h3>
+            <form action="%[BASE_URL]process" method="post" ma="log" onsubmit="ajaxAuth(event, this);">
+                <input type="hidden" name="cmd" value="login">
+                <div class="form-group">
+
+                    <input type="text" class="form-control form-control-sm" name="login" id="" value="%[aw_login]" aria-describedby="helpId" placeholder="Введите логин">
+                    <small id="helpId" class="form-text text-muted">Ваш логин в системе</small>
+                </div>
+                <div class="form-group">
+
+                    <input type="password" class="form-control form-control-sm" name="password" id="" aria-describedby="helpId" placeholder="Введите пароль">
+                    <small id="helpId" class="form-text text-muted">Ваш пароль в системе</small>
+                </div>
+
+                <button type="submit" id="btn-log" class="btn btn-lg btn-primary ">Войти в аккаунт</button>
+                <img id="load-log" src="%[BASE_URL]img/load2.gif" style="display:none; margin:5px">
+            </form>
+            <small id="logerror" class="form-text text-muted" style="color:red!important;">%[LogError]</small>
+            <br>
+        </div>
+
+
+        <div class="loginblock" id="regblock">
+            <div>
+                <button style="float:right" class="btn btn-dark" onclick="hideForms();">⛌</button>
+            </div>
+            <br><br>
+            <h3>Простая регистрация</h3>
+            <form action="%[BASE_URL]process" method="post"  ma="reg"  onsubmit="ajaxAuth(event, this);">
+                <input type="hidden" name="cmd" value="reg">
+                <div class="form-group">
+
+                    <input type="text" class="form-control form-control-sm" name="login" id="" aria-describedby="helpId" value="%[aw_login]" placeholder="Придумайте логин">
+                    <small id="helpId" class="form-text text-muted">Ваш логин в системе</small>
+                </div>
+                <div class="form-group">
+
+                    <input type="password" class="form-control form-control-sm" name="password" id="" aria-describedby="helpId" placeholder="Придумайте пароль">
+                    <small id="helpId" class="form-text text-muted">Ваш пароль в системе</small>
+                </div>
+                <div class="form-group">
+
+                    <input type="password" class="form-control form-control-sm" name="password2" id="" aria-describedby="helpId" placeholder="Повторите пароль">
+                    <small id="helpId" class="form-text text-muted">Еще раз</small>
+                </div>
+
+                <button type="submit"  id="btn-reg"  class="btn btn-lg btn-primary ">Зарегистрироваться</button>
+                <img id="load-reg" src="%[BASE_URL]img/load2.gif" style="display:none; margin:5px">
+            </form>
+            <small id="regerror" class="form-text text-muted" style="color:red!important;">%[RegError]</small>
+            <br>
+        </div>
+
+        <h3 class="ch3">ТУТ сформированно дерево вкладок</h3>
+
+    </div>
+    <script>
+
+if('%[RegError]' != '') {
+        showReg();
+}
+      
+ if('%[LogError]' != '') {
+            showLogin();
+
+ } 
+    </script>
+    <script src="%[BASE_URL]js/animhead.js"></script>
+

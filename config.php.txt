@@ -1,0 +1,42 @@
+<?php
+/**
+ * Файл конфигурации
+ * 
+ * В данном файле находятся все конфигурации для работы с базой данной
+ * Почтой а также дополнительными расширениями движка
+ * 
+ * DB_HOSTNAME - MySql сервер
+ * DB_USERNAME - Пользователь БД
+ * DB_PASSWORD - Пароль для доступа к БД
+ * DB_DATABASE - Имя базы данных
+ * DB_PORT - порт для подключения к серверу
+ * SMTP_HOST - SMTP сервер для отправки почты
+ * SMTP_PORT - порт SMTP сервера
+ * SMTP_FROM - Этот почтовый адрес быдет значится в поле From:
+ * SMTP_USER - Логин SMTP
+ * SMTP_PASS - Пароль SMTP
+ * SMTP_NOAUTH - Отключение авторизации при подключении к SMTP серверу
+ * BASE_REPLACE - Заменяет базовый путь к скриптам если движок находиться в подкатологе хоста
+ * SESSION_LIFE - Время жизни сессии в секундах
+ * 
+ * @copyright IntroZorn (c) 2022, Хроленко П.А.
+ */
+
+define('DB_HOSTNAME', 'localhost');
+define('DB_USERNAME', 'admin');
+define('DB_PASSWORD', 'admin');
+define('DB_DATABASE', 'iz_eng');
+define('DB_PORT', '3308');
+
+define('SMTP_HOST', 'smtp-16.1gb.ru');
+define('SMTP_PORT', 25);
+define('SMTP_FROM', 'todo@introzorn.ru');
+define('SMTP_USER', 'smtpuser');
+define('SMTP_PASS', 'password');
+define('SMTP_NOAUTH',false);
+
+define('BASE_REPLACE','/service/send/');
+
+define('SESSION_LIFE', 432000); //5 дней
+
+
