@@ -58,3 +58,18 @@ function migrate_model(){
 
     die("Завершино \r\n\r\n");
 }
+
+function fabric(){
+    global $argc, $argv;
+    if ($argc < 3) die('Не соответствующее колличество аргументов');
+    echo ('Пробуем выполнить ' . $argv[2]."\r\n");
+    if (!file_exists("Fabrics/{$argv[2]}.php")) die('Такго файла не существует'."\r\n");
+     require_once("config.php");
+     require_once("Engine\AUTOLOADER.php");
+    require_once("Engine/Model.php");
+    require("Fabrics/{$argv[2]}.php");
+    $mname =  "App\\Fabrics\\".$argv[2];
+  $mname::go();
+
+    die("Завершино \r\n\r\n");
+}

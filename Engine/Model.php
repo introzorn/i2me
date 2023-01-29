@@ -114,7 +114,7 @@ class Model
             'id' => 'int(11) NOT NULL AUTO_INCREMENT',
             'name' => 'char(255) NOT NULL',
             'addtime' => 'timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP',
-            'PRIMARY KEY' => 'id',
+            'PRIMARY_KEY' => 'id',
             'CHARSET' => 'utf8'
         ];
     }
@@ -137,6 +137,18 @@ class Model
             }
             if ($key == 'PRIMARY KEY') {
                 $primary = ", PRIMARY KEY (`" . $val . "`)";
+                $val = '';
+            }
+            if ($key == 'FOREIGN KEY') {
+                $primary .= ", FOREIGN KEY (`" . $val . "`)";
+                $val = '';
+            }
+            if ($key == 'REFERENCES') {
+                $primary .= " REFERENCES $val";
+                $val = '';
+            }
+            if ($key == 'ON DELETE') {
+                $primary .= " ON DELETE $val";
                 $val = '';
             }
             if ($val != '') {
