@@ -352,6 +352,20 @@ class Model
         }
     }
 
+
+    public function queryExec($sql,$featch=PDO::FETCH_ASSOC)
+    { //быстрый доступ к пдо
+        try {
+            self::$connection->exec("SET NAMES ".$this->CHARSET.$this->ifCOLLATE.';');
+            $req = self::$connection->query($sql,$featch);
+            $rows = $req->fetchAll();
+            return $rows;
+        } catch (PDOEX $err) {
+            return false;
+        }
+    }
+
+
     public function prepare($sql)
     { //быстрый доступ к пдо
         try {

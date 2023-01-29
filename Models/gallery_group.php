@@ -18,6 +18,11 @@ class gallery_group extends App\Model{
         'CHARSET'=>'utf8'];
     }
 
+    public function GetImagesG($group){
+        $sql="SELECT gallery_group.name AS gname, gallery_group.description AS gdisc, gallery_image.id, gallery_image.img, gallery_image.name, gallery_image.description FROM gallery_group LEFT JOIN gallery_image ON gallery_group.id = gallery_image.group_id WHERE gallery_group.name='$group';";
+        return $this->queryExec($sql);
+
+    }
 
 }
 

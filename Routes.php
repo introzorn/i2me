@@ -33,7 +33,8 @@ namespace App {
 
 
 
-    Router::get("/gallary/[group]", "Gallery->Index");
+    Router::get("/gallery/[group]", "Gallery->Index");
+    Router::post("/gallery/[group]", "Gallery->Index");
 
 
     /**

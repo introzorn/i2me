@@ -20,9 +20,9 @@ class Main
         $galls=(new gallery_group)->get();
 
         foreach ($galls as $key => $gall_group) {
-            $data['gallaries'] .='<button id="gallary_group_'.$gall_group['id'].'" data-group-i="'.$gall_group['id'].'" title="'.$gall_group['description'].'">'.$gall_group['name'].'</button>'."\r\n";
+            $data['gallaries'] .='<button onclick="galleryloadImages(\''.$gall_group['name'].'\')" id="gallary_group_'.$gall_group['id'].'" data-group-name="'.$gall_group['name'].'" title="'.$gall_group['description'].'">'.$gall_group['name'].'</button>'."\r\n";
         }
-      
+        
         View::Show("main",$data);
     }
 

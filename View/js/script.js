@@ -8,8 +8,8 @@ $$ = function (selsctor, obj = null) {
     return obj.querySelectorAll(selsctor);
 }
 
-$T = function (callback, delay = 1) {
-    setTimeout(callback, delay);
+$T = function (callback, delay = 1, $arg = null) {
+    setTimeout(callback, delay, $arg);
 }
 
 
@@ -80,6 +80,7 @@ function galleryShow(el) {
     img = document.createElement('img');
     img.classList.add('gallery-popup-img');
     img.src = src;
+    img.alt = text;
     form.appendChild(img);
 
 
@@ -98,21 +99,54 @@ function galleryShow(el) {
 
 function galleryHide(fast = false) {
 
-    if(!!$(".gallery-popup-shadow")){$(".gallery-popup-shadow").style.cssText = ""};
-    if(!!$(".gallery-popup-form")){$(".gallery-popup-form").style.cssText = ""};
+    if (!!$(".gallery-popup-shadow")) { $(".gallery-popup-shadow").style.cssText = "" };
+    if (!!$(".gallery-popup-form")) { $(".gallery-popup-form").style.cssText = "" };
 
     delay = 500;
-    if (fast) { 
+    if (fast) {
         $$(".gallery-popup-shadow").forEach((el) => { el.remove(); });
         $$(".gallery-popup-form").forEach((el) => { el.remove(); });
         return;
-    
+
     }
 
     $T(() => {
         $$(".gallery-popup-shadow").forEach((el) => { el.remove(); });
         $$(".gallery-popup-form").forEach((el) => { el.remove(); });
     }, delay);
+
+
+
+
+
+
+
+
+}
+function galleryloadImages(grpup) {
+    fetch(window.baseURL + 'gallery/' + grpup).then(resp => {
+        if (!resp.ok) { alert(resp.statusText); return; }
+        return resp.json();
+    }).then(json => {
+        if (!json.hasOwnProperty("success")) { alert("Ошибка получения изображений"); return; }
+        $$(".gallery-thumb").forEach(el => el.remove());
+        $(".gallery-slider").style.cssText="";
+        json.images.forEach((img,idx) => {
+
+            thumb = document.createElement('img');
+            thumb.classList.add('gallery-thumb');
+            thumb.src = window.baseURL + "img/gallery/" + img.gname + "/" + img.img;
+            thumb.alt = img.description;
+            thumb.setAttribute("data-src", window.baseURL + "img/gallery/" + img.gname + "/" + img.img);
+            thumb.setAttribute("title", img.description);
+            thumb.addEventListener("click", el => galleryShow(el.target));
+            thumb.style.cssText = "transition: all 1s; opacity:0;";
+
+            $(".gallery-slider").appendChild(thumb);
+            $T((th) => { th.style.cssText = "transition: all 0.2s, opacity 1s ; "; }, 100*(idx+1), thumb);
+        });
+    });
+
 
 
 
