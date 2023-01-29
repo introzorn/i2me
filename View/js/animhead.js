@@ -168,7 +168,7 @@ var _h = h * 3;
 
 
 function rndCol() {
-	var cc=["rgb(39,255,255)","rgb(0,0,255)","rgb(100,0,255)","rgb(0,200,255)","rgb(0,0,255)","rgb(0,0,100)","rgb(0,0,255)","rgb(0,50,50)","rgb(0,150,100)","rgb(0,0,50)","rgb(0,152,255)"];
+	var cc=["rgb(128,0,0)","rgb(255,0,0)","rgb(128,0,0)","rgb(200,0,0)","rgb(230,0,0)","rgb(50,0,0)"];
 	
   // var r = Math.floor(Math.random() * 100);
   // var g = Math.floor(Math.random() * 100);
