@@ -32,6 +32,10 @@ namespace App {
     Router::get("/", "Main->Index");
 
 
+
+    Router::get("/gallary/[group]", "Gallery->Index");
+
+
     /**
      * Заглушка для страницы 404 со вьюшкой
      */
