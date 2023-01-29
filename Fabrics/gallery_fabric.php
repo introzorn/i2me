@@ -11,10 +11,10 @@ class gallery_fabric
 
         foreach (glob("View/img/gallery/*",GLOB_ONLYDIR) as $dir) {
             $dirname=basename($dir);
-           $grp_id= $grp->add(['name'=>$dirname,'description'=>'описание ']);
+           $grp_id= $grp->add(['name'=>$dirname,'description'=>'описание '.$dirname]);
             foreach (glob("View/img/gallery/$dirname/*.[jJ][pP][gG]",) as $filename) {
 
-                $imgs->add(['group_id'=>$grp_id,'img'=>basename($filename),'name'=>pathinfo($filename, PATHINFO_FILENAME),'description'=>'описание изображение']);
+                $imgs->add(['group_id'=>$grp_id,'img'=>basename($filename),'name'=>pathinfo($filename, PATHINFO_FILENAME),'description'=>'описание изображения - '.basename($filename)]);
                 echo "$filename размер " . filesize($filename) . "\n";
             }
 
